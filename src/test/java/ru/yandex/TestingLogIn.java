@@ -2,6 +2,7 @@ package ru.yandex;
 
 
 import io.qameta.allure.Description;
+import io.qameta.allure.Step;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -9,22 +10,29 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.devtools.v85.page.Page;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.w3c.dom.html.HTMLInputElement;
 
 import java.util.List;
 
 public class TestingLogIn {
+    public static EmailPage emailPage;
     public static WebDriver driver;
     WebDriverWait wait = new WebDriverWait(driver, 10);
+
+
+
 
     @BeforeClass
     public static void setUp(){
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\cme2me\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
+        emailPage = new EmailPage(driver);
 
     }
     @Test
@@ -42,31 +50,12 @@ public class TestingLogIn {
         driver.findElement(By.id("password-toggle")).click();
         driver.findElement(By.id("passp-field-passwd")).sendKeys("testing123123");
         driver.findElement(By.id("passp:sign-in")).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[href=\"https://mail360.yandex.ru/?from=mail_promobutton\"]")));
+        emailPage.writeEmail("max.zhakov@gmail.com", "Simbirsoft Тестовое задание.<<Жаков>>", "Done!");
+        String.valueOf(emailPage.getMailsNum());
+
     }
-    public class Page{
-        @FindBy(xpath = "//*[contains(@class, 'mail-ComposeButton-Text')]")
-                private WebElement writeButton;
-        @FindBy(xpath = "//*[contains(@class, 'composeYabbles')]")
-                private WebElement addressBoard;
-        @FindBy(xpath = "//*[contains(@class, 'composeTextField ComposeSubject-TextField')]")
-                private WebElement subjBoard;
-        @FindBy(xpath = "//*[contains(@class, 'cke_wysiwyg_div cke_reset')]")
-                private WebElement contentBoard;
-        @FindBy(xpath = "//*[contains(@class, 'ComposeControlPanelButton-Button_action')]")
-                private WebElement sendBnt;
-        public WebDriver driver;
 
-        public Page(WebDriver driver){
-            PageFactory.initElements(driver, this);
-            this.driver = driver;
-        }
-
-        public int getMailsNum(){
-            wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[contains(text(), '<<Simbirsoft Тестовое задание>>')]")));
-
-            List<WebElement> Emails = driver.findElements(By.xpath("//*[contains(text(), '<<Simbirsoft Тестовое задание>>')]"));
-            return Emails.size();
-        }
-    }
 
 }
+
