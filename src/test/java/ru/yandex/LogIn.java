@@ -14,7 +14,7 @@ public class LogIn {
     private WebElement loginBox;
     @FindBy(xpath = "//*[contains(@class, 'passp-button passp-sign-in-button')]")
     private WebElement loginBtn;
-    @FindBy(xpath = "[contains(@id, 'passp-field-passwd')]")
+    @FindBy(xpath = "//*[contains(@id, 'passp-field-passwd')]")
     private WebElement passwdField;
     public WebDriver driver;
 

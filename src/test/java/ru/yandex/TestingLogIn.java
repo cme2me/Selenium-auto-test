@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.concurrent.TimeUnit;
 
 public class TestingLogIn {
     public static EmailPage emailPage;
@@ -25,6 +26,7 @@ public class TestingLogIn {
         cap.setBrowserName("chrome");
         driver = new RemoteWebDriver(new URL("http://localhost:4444"), cap);
         driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(10L, TimeUnit.SECONDS);
         driver.get("https://passport.yandex.ru/auth/welcome?from=mail&origin=hostroot_homer_auth_ru&retpath=https%3A%2F%2Fmail.yandex.ru%2F%3Fnoretpath%3D1&backpath=https%3A%2F%2Fmail.yandex.ru%3Fnoretpath%3D1");
         emailPage = new EmailPage(driver);
         logIn = new LogIn(driver);
@@ -44,7 +46,7 @@ public class TestingLogIn {
 
     @AfterClass
     public static void Close(){
-
+        driver.quit();
     }
 }
 
