@@ -8,11 +8,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.util.List;
 
 public class EmailPage {
-
         @FindBy(xpath = "[mail-ComposeButton js-main-action-compose)]")
         private WebElement writeButton;
         @FindBy(xpath = "[contains(@class, 'composeYabbles')]")
@@ -33,7 +31,6 @@ public class EmailPage {
         public int getMailsNum(){
             WebDriverWait wait = new WebDriverWait(driver,3);
             wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[contains(text(), '<<Simbirsoft Тестовое задание>>')]")));
-
             List<WebElement> Emails = driver.findElements(By.xpath("//*[contains(text(), '<<Simbirsoft Тестовое задание>>')]"));
             return Emails.size();
         }
