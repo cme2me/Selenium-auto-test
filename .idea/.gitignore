@@ -1,3 +1,8 @@
 # Default ignored files
 /shelf/
 /workspace.xml
+# Ignore objects and archives.
+*.[oa]
+.idea/
+.target/
+.*
