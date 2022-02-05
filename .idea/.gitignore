@@ -7,3 +7,6 @@
 .target/
 .*
 *.html
+.allure/
+*.iml
+*.ipr
