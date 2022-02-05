@@ -46,7 +46,7 @@ public class TestingLogIn {
 
     @AfterClass
     public static void Close(){
-        driver.quit();
+
     }
 }
 
