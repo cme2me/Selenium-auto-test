@@ -1,5 +1,6 @@
 package ru.yandex;
 
+import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -35,23 +36,23 @@ public class EmailPage {
         return Emails.size();
     }
 
-    @Step("Нажимаем кнопку 'Написать'")
+    @Attachment("Нажимаем кнопку 'Написать'")
     public void writeBtn(){
             writeButton.click();
         }
-    @Step("Нажимаем кнопку'Отправить")
+    @Attachment("Нажимаем кнопку'Отправить")
     public void sentBtn(){
             sendBnt.click();
         }
-    @Step("Вставляем адрес {addressBoard}")
+    @Attachment("Вставляем адрес {mailAdress}")
     public void inputAdress(String mailAdress){
         addressBoard.sendKeys(mailAdress);
     }
-    @Step("Вставляем тему письма {subjBoard}")
+    @Attachment("Вставляем тему письма {subject}")
     public void inputSubj(String subject){
             subjBoard.sendKeys(subject);
         }
-    @Step("Вставка содержимого")
+    @Attachment("Вставка содержимого")
     public void inputContent(String content){
             contentBoard.sendKeys(content);
         }

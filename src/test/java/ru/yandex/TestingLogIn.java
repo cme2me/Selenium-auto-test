@@ -1,9 +1,9 @@
 package ru.yandex;
 
 import io.qameta.allure.Description;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -20,7 +20,7 @@ public class TestingLogIn {
     public static LogIn logIn;
     WebDriverWait wait = new WebDriverWait(driver, 10);
 
-    @BeforeClass
+    @BeforeAll
     public static void setUp() throws MalformedURLException {
         DesiredCapabilities cap = new DesiredCapabilities();
         cap.setBrowserName("chrome");
@@ -44,9 +44,9 @@ public class TestingLogIn {
         emailPage.writeEmail("max.zhakov@gmail.com", "Simbirsoft Тестовое задание.<<Жаков>>", String.valueOf(emailPage.getMailsNum()));
     }
 
-    @AfterClass
+    @AfterAll
     public static void Close(){
-
+        driver.quit();
     }
 }
 
