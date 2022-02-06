@@ -1,7 +1,6 @@
 package ru.yandex;
 
 import io.qameta.allure.Attachment;
-import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -31,8 +30,8 @@ public class EmailPage {
 
     public int getMailsNum(){
         WebDriverWait wait = new WebDriverWait(driver,5);
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[contains(text(), '«Simbirsoft Тестовое задание»')]")));
-        List<WebElement> Emails = driver.findElements(By.xpath("//*[contains(text(), '«Simbirsoft Тестовое задание»')]"));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[contains(@class, 'mail-MessageSnippet-FromText')]")));
+        List<WebElement> Emails = driver.findElements(By.xpath("//*[contains(@title, 'max.zhakov@gmail.com')]"));
         return Emails.size();
     }
 
