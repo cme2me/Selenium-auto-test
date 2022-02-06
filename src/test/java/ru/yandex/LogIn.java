@@ -1,5 +1,6 @@
 package ru.yandex;
 
+import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -19,17 +20,17 @@ public class LogIn {
         PageFactory.initElements(driver, this);
         this.driver = driver;
     }
-    @Step("Вставляем логин {login}")
+    @Attachment("Вставляем логин {login}")
     public void inputLogin(String login) {
         System.out.println(loginBox.getText());
         loginBox.sendKeys(login);
     }
-    @Step("Вставляем пароль {passwd}")
+    @Attachment("Вставляем пароль {passwd}")
     public void inputPasswd(String passwd) {
         passwdField.sendKeys(passwd);
     }
 
-    @Step("Нажимаем кнопку 'Ввести'")
+    @Attachment("Нажимаем кнопку 'Ввести'")
     public void clickLoginBtn() {
         loginBtn.click();
     }
