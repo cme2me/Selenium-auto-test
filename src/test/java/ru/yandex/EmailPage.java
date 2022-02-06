@@ -1,7 +1,6 @@
 package ru.yandex;
 
 import io.qameta.allure.Attachment;
-import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -20,7 +19,7 @@ public class EmailPage {
     private WebElement subjBoard;
     @FindBy(xpath = "//*[contains(@class, 'cke_wysiwyg_div cke_reset')]")
     private WebElement contentBoard;
-    @FindBy(xpath = "//*[contains(@class, 'Button2 Button2_pin_circle-circle Button2_view_default Button2_size_l')]")//ComposeControlPanelButton-Button_action
+    @FindBy(xpath = "//*[contains(@class, 'Button2 Button2_pin_circle-circle Button2_view_default Button2_size_l')]")
     private WebElement sendBnt;
     public WebDriver driver;
 
@@ -31,8 +30,8 @@ public class EmailPage {
 
     public int getMailsNum(){
         WebDriverWait wait = new WebDriverWait(driver,5);
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[contains(text(), '«Simbirsoft Тестовое задание»')]")));
-        List<WebElement> Emails = driver.findElements(By.xpath("//*[contains(text(), '«Simbirsoft Тестовое задание»')]"));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[contains(@class, 'mail-MessageSnippet-FromText')]")));
+        List<WebElement> Emails = driver.findElements(By.xpath("//*[contains(@title, 'max.zhakov@gmail.com')]"));
         return Emails.size();
     }
 
@@ -40,7 +39,7 @@ public class EmailPage {
     public void writeBtn(){
             writeButton.click();
         }
-    @Attachment("Нажимаем кнопку'Отправить")
+    @Attachment("Нажимаем кнопку 'Отправить")
     public void sentBtn(){
             sendBnt.click();
         }
