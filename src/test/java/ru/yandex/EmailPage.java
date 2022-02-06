@@ -19,7 +19,7 @@ public class EmailPage {
     private WebElement subjBoard;
     @FindBy(xpath = "//*[contains(@class, 'cke_wysiwyg_div cke_reset')]")
     private WebElement contentBoard;
-    @FindBy(xpath = "//*[contains(@class, 'Button2 Button2_pin_circle-circle Button2_view_default Button2_size_l')]")//ComposeControlPanelButton-Button_action
+    @FindBy(xpath = "//*[contains(@class, 'Button2 Button2_pin_circle-circle Button2_view_default Button2_size_l')]")
     private WebElement sendBnt;
     public WebDriver driver;
 
