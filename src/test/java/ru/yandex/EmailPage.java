@@ -39,7 +39,7 @@ public class EmailPage {
     public void writeBtn(){
             writeButton.click();
         }
-    @Attachment("Нажимаем кнопку'Отправить")
+    @Attachment("Нажимаем кнопку 'Отправить")
     public void sentBtn(){
             sendBnt.click();
         }
